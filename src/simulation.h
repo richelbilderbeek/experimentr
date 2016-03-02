@@ -1,9 +1,7 @@
 #ifndef SIMULATION_H
 #define SIMULATION_H
 
-#include <vector>
-
-std::vector<double> do_simulation();
+void do_simulation(const std::string csv_filename);
 
 #endif // SIMULATION_H
 

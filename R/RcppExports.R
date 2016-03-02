@@ -16,8 +16,16 @@ sum_cpp11 <- function(x) {
     .Call('experimentr_sum_cpp11', PACKAGE = 'experimentr', x)
 }
 
+do_simulation <- function(csv_filename) {
+    invisible(.Call('experimentr_do_simulation', PACKAGE = 'experimentr', csv_filename))
+}
+
+create_data_frame_cpp <- function() {
+    .Call('experimentr_create_data_frame_cpp', PACKAGE = 'experimentr')
+}
+
 #' @export
-do_simulation <- function() {
-    .Call('experimentr_do_simulation', PACKAGE = 'experimentr')
+createTwo <- function() {
+    .Call('experimentr_createTwo', PACKAGE = 'experimentr')
 }
 

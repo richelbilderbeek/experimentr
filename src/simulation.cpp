@@ -3,8 +3,14 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <fstream>
+
+#pragma GCC diagnostic ignored "-Wextra"
+#include <Rcpp.h>
+#pragma GCC diagnostic pop
 
 #include "individual.h"
+
 
 char toggle_case(const char c)
 {
@@ -54,14 +60,12 @@ individual create_offspring(const individual& father, const individual& mother, 
   return individual(genotype_kid);
 }
 
-#include <Rcpp.h>
-using namespace Rcpp;
 
-//' @export
 // [[Rcpp::export]]
-std::vector<double> do_simulation()
+void do_simulation(const std::string csv_filename)
 {
-  std::vector<double> result;
+  std::ofstream file(csv_filename);
+  file << "t" << ",f_ab,f_aB,f_Ab,f_AB\n";
 
   const int seed{42};
   std::mt19937 rng_engine{seed};
@@ -76,14 +80,13 @@ std::vector<double> do_simulation()
 
   for (int i=0; i!=n_generations; ++i)
   {
-    result.push_back(get_genotype_frequency("ab",population));
-    //Show genotype frequencies
-    std::cout
-      << i << ": "
-      << "f_ab: " << get_genotype_frequency("ab",population) << ", "
-      << "f_aB: " << get_genotype_frequency("aB",population) << ", "
-      << "f_Ab: " << get_genotype_frequency("Ab",population) << ", "
-      << "f_AB: " << get_genotype_frequency("AB",population) << '\n';
+    //Save genotype frequencies
+    file
+      << i
+      << get_genotype_frequency("ab",population) << ", "
+      << get_genotype_frequency("aB",population) << ", "
+      << get_genotype_frequency("Ab",population) << ", "
+      << get_genotype_frequency("AB",population) << '\n';
     //Make individuals mate and reproduce with mutation
     std::vector<individual> next_population;
     next_population.reserve(population_size);
@@ -102,7 +105,53 @@ std::vector<double> do_simulation()
     assert(population.size() == next_population.size());
     population = next_population;
   }
-  return result;
 }
 
 
+#ifdef NOT_NOW_20160301
+// [[Rcpp::export]]
+Rcpp::DataFrame create_data_frame_cpp()
+{
+  using namespace Rcpp;
+  Rcpp::IntegerVector v(3);
+  // = {1,2,3};
+  //for (int i=0; i!=3; ++i) v.push_back(i);
+  //std::vector<int> v = { 1,2,3};
+  Rcpp::StringVector s = Rcpp::StringVector::create();
+  for (int i=0; i!=3; ++i) s.push_back(std::string(1,'a' + i));
+  // = {"a", "b", "c" };
+  //std::vector<std::string> s = {"a", "b", "c" };
+  return DataFrame::create(_["x"] = v, _["y"] = s);
+}
+
+using namespace Rcpp;
+
+//' @export
+// [[Rcpp::export]]
+DataFrame createTwo(){
+    IntegerVector v = IntegerVector::create(1,2,3);
+        std::vector<std::string> s(3);
+        s[0] = "a";
+        s[1] = "b";
+        s[2] = "c";
+        return DataFrame::create(Named("a")=v, Named("b")=s);
+}
+
+/*
+return DataFrame::create(
+      _["clientIp"]     = clientIp,
+      _["clientPort"]   = clientPort,
+      _["acceptDate"]   = acceptDate,
+      _["frontendName"] = frontendName,
+      _["backendName"]  = backendName,
+      _["serverName"]   = serverName,
+      _["tq"]           = tq,
+      _["tw"]           = tw,
+      _["tc"]           = tc,
+      _["tr"]           = tr,
+      _["tt"]           = tt,
+      _["status_code"]  = statusCode,
+      _["bytes_read"]   = bytesRead,
+*/
+
+#endif

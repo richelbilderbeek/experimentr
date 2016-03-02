@@ -39,12 +39,32 @@ BEGIN_RCPP
 END_RCPP
 }
 // do_simulation
-std::vector<double> do_simulation();
-RcppExport SEXP experimentr_do_simulation() {
+void do_simulation(const std::string csv_filename);
+RcppExport SEXP experimentr_do_simulation(SEXP csv_filenameSEXP) {
+BEGIN_RCPP
+    Rcpp::RNGScope __rngScope;
+    Rcpp::traits::input_parameter< const std::string >::type csv_filename(csv_filenameSEXP);
+    do_simulation(csv_filename);
+    return R_NilValue;
+END_RCPP
+}
+// create_data_frame_cpp
+Rcpp::DataFrame create_data_frame_cpp();
+RcppExport SEXP experimentr_create_data_frame_cpp() {
 BEGIN_RCPP
     Rcpp::RObject __result;
     Rcpp::RNGScope __rngScope;
-    __result = Rcpp::wrap(do_simulation());
+    __result = Rcpp::wrap(create_data_frame_cpp());
+    return __result;
+END_RCPP
+}
+// createTwo
+DataFrame createTwo();
+RcppExport SEXP experimentr_createTwo() {
+BEGIN_RCPP
+    Rcpp::RObject __result;
+    Rcpp::RNGScope __rngScope;
+    __result = Rcpp::wrap(createTwo());
     return __result;
 END_RCPP
 }

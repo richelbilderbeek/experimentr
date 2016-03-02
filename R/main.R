@@ -4,6 +4,10 @@
 #' @export
 main <- function()
 {
+  d <- experimentr::createTwo()
+
   result <- experimentr::do_simulation()
   print(result)
 }
+
+

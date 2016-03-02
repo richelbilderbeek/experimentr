@@ -29,3 +29,24 @@ test_that("Crash me", {
   skip("Today")
   expect_equal(TRUE, FALSE)
 })
+
+
+test_that("test_createTwo", {
+  skip("Today")
+  x <- createTwo()
+  expect_equal(ncol(x), 2)
+  expect_equal(nrow(x), 3)
+  expected_names <- c("a", "b")
+  expect_equal(names(x), expected_names)
+
+})
+
+test_that("test_create_dateframe_cpp", {
+  skip("Today")
+  x <- create_data_frame_cpp()
+  expect_equal(ncol(x), 2)
+  expect_equal(nrow(x), 3)
+  expected_names <- c("x", "y")
+  expect_equal(names(x), expected_names)
+
+})
