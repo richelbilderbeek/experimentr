@@ -1,15 +1,16 @@
-include(../RibiLibraries/Rinside.pri)
 TEMPLATE = app
 CONFIG += console
 CONFIG -= app_bundle
 CONFIG -= qt
 QMAKE_CXXFLAGS += -std=c++11
-SOURCES += \
-    src/main.cpp \
-    src/individual.cpp \
-    src/simulation.cpp
-    #src/*.cpp
 
-INCLUDEPATH += include
+TARGET = ../experimentr/bin/main
+
 HEADERS += \
-    include/*.h
+    cpp/individual.h \
+    cpp/simulation.h
+
+SOURCES += \
+    cpp/individual.cpp \
+    cpp/main.cpp \
+    cpp/simulation.cpp

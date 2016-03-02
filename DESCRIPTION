@@ -7,9 +7,6 @@ Maintainer: Richel Bilderbeek <richel@richelbilderbeek.nl>
 Description: My personal R experiments. For personal use only.
 License: GPL-3
 LazyData: TRUE
-LinkingTo: Rcpp
-Imports:
-    Rcpp
 RoxygenNote: 5.0.1
 Suggests: testthat,
     knitr,

@@ -9,15 +9,10 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-Always run this code first in the terminal:
-```
-Sys.setenv("PKG_CXXFLAGS" = "-std=c++11")
-```
-
-
 Here is the demo:
 
 ```{r}
-result <- experimentr::do_simulation()
-plot(result)
+csv_filename <- "/home/richel/GitHubs/experimentr/bin/results.csv"
+result <- experimentr::do_simulation_r(csv_filename)
+print(result)
 ```
