@@ -4,8 +4,9 @@
 #' @export
 do_simulation_r <- function(csv_filename)
 {
-  exe_filename <- "/home/richel/GitHubs/experimentr/bin/main"
-  #csv_filename <- "/home/richel/GitHubs/experimentr/bin/results.csv"
+
+  exe_filename <- paste(Sys.getenv("HOME"), "/GitHubs/experimentr/bin/main", sep = "")
+  #csv_filename <- paste(Sys.getenv("HOME"), "/GitHubs/experimentr/bin/results.csv", sep = "")
   if (!file.exists(exe_filename))
   {
     stop("File '", exe_filename, "'not found")

@@ -4,13 +4,15 @@ CONFIG -= app_bundle
 CONFIG -= qt
 QMAKE_CXXFLAGS += -std=c++11
 
+include(../RibiLibraries/Rinside.pri)
+
 TARGET = ../experimentr/bin/main
 
 HEADERS += \
-    cpp/individual.h \
-    cpp/simulation.h
+    src/individual.h \
+    src/simulation.h
 
 SOURCES += \
-    cpp/individual.cpp \
-    cpp/main.cpp \
-    cpp/simulation.cpp
+    src/individual.cpp \
+    src/main.cpp \
+    src/simulation.cpp

@@ -9,10 +9,17 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
+
+```
+#Always run this in the terminal
+#library(Rcpp11)
+#Sys.setenv("PKG_CXXFLAGS" = "-std=c++11")
+```
+
 Here is the demo:
 
 ```{r}
-csv_filename <- "/home/richel/GitHubs/experimentr/bin/results.csv"
+csv_filename <- paste(Sys.getenv("HOME"), "/GitHubs/experimentr/bin/results.csv", sep = "")
 result <- experimentr::do_simulation_r(csv_filename)
 print(result)
 ```

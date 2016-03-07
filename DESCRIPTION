@@ -12,3 +12,5 @@ Suggests: testthat,
     knitr,
     rmarkdown
 VignetteBuilder: knitr
+Depends: Rcpp11, Rcpp
+LinkingTo: Rcpp, Rcpp11

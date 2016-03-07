@@ -4,7 +4,7 @@ context("test_do_simulation")
 ## TODO: Add more tests
 
 test_that("multiplication works", {
-  csv_filename <- "/home/richel/GitHubs/experimentr/bin/results.csv"
+  csv_filename <- paste(Sys.getenv("HOME"), "/GitHubs/experimentr/bin/results.csv", sep = "")
   experimentr::do_simulation_r(csv_filename)
   result <- read.csv(csv_filename, header = TRUE, sep = ",")
   print(result)
