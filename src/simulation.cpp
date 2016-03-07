@@ -6,7 +6,7 @@
 #include <fstream>
 
 #pragma GCC diagnostic ignored "-Wextra"
-#include <Rcpp11>
+#include <Rcpp.h>
 #pragma GCC diagnostic pop
 
 #include "individual.h"
@@ -56,12 +56,12 @@ individual create_offspring(const individual& father, const individual& mother, 
   std::uniform_real_distribution<double> mutation(0.0,1.0);
   if (mutation(rng_engine) < mutation_rate) { genotype_kid[0] = toggle_case(genotype_kid[0]); }
   if (mutation(rng_engine) < mutation_rate) { genotype_kid[1] = toggle_case(genotype_kid[1]); }
-
+so
   return individual(genotype_kid);
 }
 
 
-// [[export]]
+// [[Rcpp::export]]
 void do_simulation(const std::string csv_filename)
 {
   std::ofstream file(csv_filename);

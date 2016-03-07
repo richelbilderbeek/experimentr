@@ -12,6 +12,6 @@ Suggests: testthat,
     knitr,
     rmarkdown
 VignetteBuilder: knitr
-Depends: Rcpp11
-LinkingTo: Rcpp11
+Depends: Rcpp
+LinkingTo: Rcpp
 SystemRequirements: C++11
