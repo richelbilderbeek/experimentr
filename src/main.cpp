@@ -5,9 +5,6 @@
 #include <vector>
 #include "simulation.h"
 
-  //Rcpp::DataFrame d = create_data_frame_cpp();
-
-
 ///Determines if a filename is a regular file
 ///From http://www.richelbilderbeek.nl/CppIsRegularFile.htm
 bool IsRegularFile(const std::string& filename)
