@@ -31,6 +31,7 @@ std::vector<std::string> FileToVector(const std::string& filename)
 }
 
 //Just for testing the C++ code
+//Will not be used by R
 int main()
 {
   try
