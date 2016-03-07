@@ -10,12 +10,6 @@ vignette: >
 ---
 
 
-```
-#Always run this in the terminal
-#library(Rcpp11)
-#Sys.setenv("PKG_CXXFLAGS" = "-std=c++11")
-```
-
 Here is the demo:
 
 ```{r}
