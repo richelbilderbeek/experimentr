@@ -17,3 +17,5 @@ vignettes/*.pdf
 *.pro.user
 inst/doc
 *.o
+bin/main
+bin/temp.csv
